@@ -1,0 +1,96 @@
+#include <Adafruit_SSD1306.h>
+#define OLED_ADDR   0xZZ
+Adafruit_SSD1306 display(-1);
+void setup() {
+  display.begin(SSD1306_SWITCHCAPVCC, OLED_ADDR);
+  display.clearDisplay();
+  display.display();
+  delay(10000);
+}
+
+void loop() {
+  happy();
+  delay (random (500, 1000));
+  cierra();
+  delay (150);
+  enfado();
+  delay (random (1000, 3000));
+  cierra();
+  delay (150);
+  entorna();
+  delay (random (1000, 3000));
+  cierra();
+  delay (150);
+  enfado1();
+  delay (random (1000, 3000));
+  cierra();
+  delay (150);
+  triste();
+  delay (random (1000, 3000));
+  cierra();
+  delay (150);
+  abre();
+  delay (random (500, 3000));
+  cierra();
+  delay (150);
+  happy();
+  delay (random (500, 1000));
+}
+
+
+void abre() {
+  display.clearDisplay();
+  display.fillCircle (50, 15, 12, WHITE); //ojo izquierdo grande
+  display.fillCircle (82, 20, 7, WHITE); //ojo derecho pequeño
+  display.display();
+}
+
+void cierra() {
+  display.clearDisplay();
+  display.drawFastHLine(40, 15, 20, WHITE);
+  display.drawFastHLine(72, 20, 15, WHITE);
+  display.display();
+}
+
+
+void entorna() {
+  display.clearDisplay();
+  display.fillCircle (42, 10, 20, WHITE); //ojo izquierdo grande
+  display.fillCircle (82, 10, 15, WHITE); //ojo derecho pequeño
+  display.fillRect (0, 0, 128, 15, BLACK); //ceja superior
+  display.fillRect (0, 40, 128, 15, BLACK); //ceja inferior
+  display.display();
+}
+
+void triste() {
+  display.clearDisplay();
+  display.fillCircle (42, 10, 17, WHITE); //ojo izquierdo grande
+  display.fillCircle (82, 10, 17, WHITE); //ojo derecho pequeño
+  display.fillTriangle (0, 0, 0, 35, 78, 0, BLACK); //ceja superior
+  display.fillTriangle (50, 0, 128, 35, 128, 0, BLACK); //ceja superior
+  display.display();
+}
+
+void happy() {
+  display.clearDisplay();
+  display.fillCircle (42, 25, 15, WHITE); //ojo izquierdo grande
+  display.fillCircle (82, 25, 15, WHITE); //ojo derecho pequeño
+  display.fillCircle (42, 33, 20, BLACK); //ojo izquierdo grande
+  display.fillCircle (82, 33, 20, BLACK); //ojo derecho pequeño
+  display.display();
+}
+
+void enfado() {
+  display.clearDisplay();
+  display.fillCircle (42, 10, 18, WHITE); //ojo izquierdo grande
+  display.fillCircle (82, 10, 12, WHITE); //ojo derecho pequeño
+  display.fillTriangle (0, 0, 54, 26, 118, 0, BLACK); //ceja superior
+  display.display();
+}
+void enfado1() {
+  display.clearDisplay();
+  display.fillCircle (42, 10, 18, WHITE); //ojo izquierdo grande
+  display.fillCircle (82, 10, 12, WHITE); //ojo derecho pequeño
+  display.fillTriangle (0, 0, 65, 15, 120, 0, BLACK); //ceja superior
+  display.display();
+}
